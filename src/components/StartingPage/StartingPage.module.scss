@@ -1,0 +1,22 @@
+.mainContainer {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  .newsFeed {
+    justify-self: center;
+  }
+  aside {
+    height: max-content;
+
+    position: sticky;
+    top: 0;
+    width: 20vw;
+    background-color: whitesmoke;
+    border-bottom: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .mainContainer {
+    display: block;
+  }
+}

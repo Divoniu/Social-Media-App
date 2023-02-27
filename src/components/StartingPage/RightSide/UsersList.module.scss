@@ -1,0 +1,34 @@
+.usersListContainer {
+  max-height: 45rem;
+  //overflow-y: scroll;
+  //overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  .searchMessages {
+    margin: 0.5rem 0.7rem;
+    display: block;
+    padding: 0.5rem;
+    flex-grow: 1;
+    border-color: lightgray;
+
+    border-radius: 0.3rem;
+  }
+
+  .loadingMessage {
+    display: block;
+    height: 45rem;
+    text-align: center;
+    padding-top: 10rem;
+  }
+}
+
+.usersList {
+  list-style: none;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.displayNone {
+  display: none;
+}

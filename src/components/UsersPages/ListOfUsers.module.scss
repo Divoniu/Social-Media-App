@@ -1,0 +1,73 @@
+.listOfUsersContainer {
+  margin: 5% 15%;
+  min-width: 25rem;
+  // de testat si cu vh si vw;
+  background-color: whitesmoke;
+  border: 1px lightgray solid;
+  border-radius: 0.5rem;
+  .header {
+    padding: 1rem;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    .numberOfFriends {
+      margin-right: 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .searchAndSort {
+      white-space: nowrap;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 2rem 0.5rem 0 0.5rem;
+      .sortContainer {
+        label {
+          margin-left: 1rem;
+          font-weight: 500;
+          font-size: 0.8rem;
+          margin-right: 0.5rem;
+        }
+        .sortBy {
+          padding: 0.3rem;
+          border-radius: 0.3rem;
+          border: transparent;
+          outline-color: transparent;
+          width: 115px;
+          font-weight: bolder;
+        }
+      }
+
+      .searchBar {
+        padding: 0.3rem;
+        border-radius: 0.3rem;
+        border-color: lightgray;
+        outline-color: black;
+      }
+    }
+  }
+  hr {
+    background-color: lightgray;
+    height: 1px;
+    width: 100%;
+  }
+  .allFriends {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 2rem;
+    margin-top: 0.8rem;
+    overflow: hidden;
+    hr {
+      margin-bottom: 0.6rem;
+      margin-left: 4rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .listOfUsersContainer {
+    min-width: fit-content;
+  }
+}

@@ -1,0 +1,43 @@
+.listOfButtons {
+  margin: 3rem 1rem;
+  .buttonItem {
+    margin: 1rem 0;
+
+    display: flex;
+    justify-content: center;
+    button {
+      font-size: 1rem;
+      font-weight: 600;
+      width: 100%;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      background-color: whitesmoke;
+      border-radius: 10px;
+      border: transparent;
+      &:hover {
+        background-color: lightgray;
+      }
+      span {
+        margin-left: 0.2rem;
+      }
+      img {
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+a {
+  display: flex;
+  align-items: end;
+}
+
+@media only screen and (max-width: 650px) {
+  .leftSideContainer {
+    display: none;
+  }
+}

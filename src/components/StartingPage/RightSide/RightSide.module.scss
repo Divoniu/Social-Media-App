@@ -1,0 +1,20 @@
+.rightSide {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  // max-width: 300px;
+  border-radius: 0.5rem 0.5rem 0 0;
+  box-shadow: 0 8px 8px hsla(0, 0%, 0%, 0.4);
+  background-color: whitesmoke;
+  z-index: 100;
+}
+
+@media only screen and (max-width: 700px) {
+  .rightSide {
+    display: none;
+  }
+}

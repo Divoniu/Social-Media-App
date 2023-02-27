@@ -1,0 +1,79 @@
+.userContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.4rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  &::after {
+  }
+
+  .userData {
+    display: flex;
+    flex-direction: row;
+    min-width: 15rem;
+    flex-grow: 1;
+    cursor: pointer;
+    align-items: center;
+    .name {
+      margin-left: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .profileImage {
+      border-radius: 50%;
+    }
+  }
+  .userOptions {
+    margin: 0 1rem;
+    display: flex;
+    height: min-content;
+
+    button {
+      font-size: 0.95rem;
+      margin: 0 0.2rem;
+      background-color: transparent;
+      padding: 0 0.5rem;
+      border-radius: 30px;
+      border-color: transparent;
+
+      &:hover {
+        background-color: lightgray;
+
+        //din cauza borderului mi se misca aiurea textul la hover
+      }
+    }
+    .message {
+      font-weight: 700;
+    }
+    .deleteContainer {
+      position: relative;
+      .moreOptions {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        position: relative;
+      }
+      .deleteButton {
+        border: 1px solid black;
+        height: 100%;
+        border-radius: 8px 0 8px 8px;
+        white-space: nowrap;
+        position: absolute;
+        bottom: -1.7rem;
+        right: 1.4rem;
+
+        &.displayNone {
+          display: none;
+        }
+      }
+    }
+  }
+}

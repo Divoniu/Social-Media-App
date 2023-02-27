@@ -1,0 +1,13 @@
+.listOfUsersContainer {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
+  background-color: white;
+}
+@media only screen and (max-width: 650px) {
+  .listOfUsersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+  }
+}
