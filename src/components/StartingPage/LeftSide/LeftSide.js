@@ -13,19 +13,19 @@ export function LeftSide() {
         <li className={styles.buttonItem}>
           <button>
             <Link to="/">
-              <HomeIcon />
-              <span>Home</span>
+              <HomeIcon className={styles.icon} />
+              <span className={styles.leftSideItemName}>Home</span>
             </Link>
           </button>
         </li>
         <li className={styles.buttonItem}>
           <button>
-            <Link to="/me">
+            <Link to="/me" className={styles.profileContainerLeftSide}>
               <img
                 src={require("../NewsFeed/assets/profile.jpeg")}
                 alt="profilePicture"
               />
-              <span>Ovidiu Nicolaescu</span>
+              <span className={styles.leftSideItemName}>Ovidiu Nicolaescu</span>
             </Link>
           </button>
         </li>
@@ -34,25 +34,26 @@ export function LeftSide() {
       <ul className={styles.listOfButtons}>
         <li className={styles.buttonItem}>
           <button>
-            <LiveTvIcon />
-            <span>Watch</span>
+            <LiveTvIcon className={styles.icon} />
+            <span className={styles.leftSideItemName}>Watch</span>
           </button>
         </li>
         <li className={styles.buttonItem}>
           <button>
-            <LocalMallIcon />
-            <span> Marketplace</span>
+            <LocalMallIcon className={styles.icon} />
+            <span className={styles.leftSideItemName}> Marketplace</span>
           </button>
         </li>
         <li className={styles.buttonItem}>
           <button>
-            <VideogameAssetIcon /> <span>Gaming</span>
+            <VideogameAssetIcon className={styles.icon} />
+            <span className={styles.leftSideItemName}>Gaming</span>
           </button>
         </li>
         <li className={styles.buttonItem}>
           <button>
-            <AppsIcon />
-            <span>More</span>
+            <AppsIcon className={styles.icon} />
+            <span className={styles.leftSideItemName}>More</span>
           </button>
         </li>
       </ul>
@@ -60,16 +61,16 @@ export function LeftSide() {
       <ul className={styles.listOfButtons}>
         <li className={styles.buttonItem}>
           <button>
-            <span>Random Group</span>{" "}
+            <span className={styles.leftSideItemName}>Random Group</span>
           </button>
         </li>
         <li className={styles.buttonItem}>
           <button>
-            <Groups3Icon /> <span>See all Groups</span>
+            <Groups3Icon className={styles.icon} />
+            <span className={styles.leftSideItemName}>See all Groups</span>
           </button>
         </li>
       </ul>
-      ;
     </div>
   );
 }

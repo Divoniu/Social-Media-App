@@ -12,22 +12,19 @@ export const DataProvider = ({ children }) => {
 
   const fetchUsers = async () => {
     try {
-      if (users.length < 20) {
-        for (let i = 1; i <= 20; i++) {
-          const response = await fetch(`${API_URL_USERS}?page=${i}`);
-          if (!response.ok) throw Error("Couldn't load the users list");
-          const listUsers = await response.json();
+      const response = await fetch(`${API_URL_USERS}?results=20`);
+      if (!response.ok) throw Error("Couldn't load the users list");
+      const listUsers = await response.json();
 
-          const overriddenIdUsers = listUsers.results.map((user) => ({
-            ...user,
-            id: `${i}`,
-          }));
+      const overriddenIdUsers = listUsers.results.map((user, idx) => ({
+        ...user,
+        id: `${idx}`,
+      }));
 
-          setUsers((prevState) => {
-            return [...prevState, ...overriddenIdUsers];
-          });
-        }
-      }
+      setUsers((prevState) => {
+        return [...prevState, ...overriddenIdUsers];
+      });
+
       // not to self - id-urile vor fi de la 1;
       //listOfUsers();
       // setUsers(listUsers.results);

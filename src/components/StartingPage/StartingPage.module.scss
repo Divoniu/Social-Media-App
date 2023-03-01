@@ -1,22 +1,33 @@
 .mainContainer {
-  display: grid;
-  grid-template-columns: 0.2fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   .newsFeed {
-    justify-self: center;
+    margin: 0 2.5rem;
   }
   aside {
-    height: max-content;
-
     position: sticky;
+    height: max-content;
     top: 0;
-    width: 20vw;
+
+    min-width: fit-content;
     background-color: whitesmoke;
     border-bottom: none;
   }
 }
-
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 950px) {
+  .mainContainer {
+    .newsFeed {
+      margin: 0 0.5rem;
+    }
+  }
+}
+@media only screen and (max-width: 650px) {
   .mainContainer {
     display: block;
+
+    .newsFeed {
+      margin: 0 0.1rem;
+    }
   }
 }

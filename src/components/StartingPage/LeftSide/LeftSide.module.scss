@@ -1,12 +1,11 @@
 .listOfButtons {
-  margin: 3rem 1rem;
+  margin: 1.5rem 1rem;
   .buttonItem {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 
     display: flex;
     justify-content: center;
     button {
-      font-size: 1rem;
       font-weight: 600;
       width: 100%;
       padding: 0.5rem;
@@ -23,8 +22,8 @@
         margin-left: 0.2rem;
       }
       img {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         object-fit: cover;
         border-radius: 50%;
       }
@@ -36,8 +35,34 @@ a {
   align-items: end;
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 670px) {
   .leftSideContainer {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .listOfButtons {
+    margin: 0.5rem 0;
+    .buttonItem {
+      button {
+        padding: 0.3rem;
+        max-width: min-content;
+        .leftSideItemName {
+          display: none;
+        }
+
+        .icon {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .profileContainerLeftSide {
+    display: flex;
+    width: min-content;
+    flex-direction: column;
+    align-items: center;
   }
 }
