@@ -1,5 +1,4 @@
 .mainContainer {
-  background-color: black;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,7 +11,7 @@
     top: 0;
 
     min-width: fit-content;
-    background-color: whitesmoke;
+    background-color: black;
     border-bottom: none;
   }
 }
