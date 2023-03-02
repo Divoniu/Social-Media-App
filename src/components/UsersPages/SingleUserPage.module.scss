@@ -4,95 +4,11 @@
   min-width: fit-content;
 
   //do the responsive
-  .userProfileHeader {
-    border-radius: 20px;
-    background-color: whitesmoke;
-    .userProfileCoverImage {
-      img {
-        object-fit: cover;
-        height: 350px;
-        max-width: 100%;
-        //   background-color: black;
-        // object-fit: contain;
-      }
-    }
-    .userProfile {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .userImageAndName {
-        position: relative;
-        height: 7.5rem;
-        .userProfileImage {
-          width: 170px;
-          height: auto;
-          border-radius: 50%;
-          border: 5px solid whitesmoke;
-          position: absolute;
-          top: -40px;
-          left: 30px;
-        }
-        .userName {
-          font-size: 1.8rem;
-          font-weight: 600;
-          margin-left: 12.7rem;
-          white-space: nowrap;
-        }
-      }
-      .userOptions {
-        display: flex;
-        gap: 1.5rem;
 
-        margin-right: 5rem;
-        button {
-          font-size: 1rem;
-          padding: 0.5rem;
-          border-radius: 10px;
-          border-color: transparent;
-          outline-color: transparent;
-        }
-      }
-    }
-  }
-  .multipleOptionsContainer {
-    hr {
-      margin: 1.5rem 2rem 0 2rem;
-    }
-    .multipleOptions {
-      display: flex;
-      flex-direction: row;
-      margin: 0 2rem;
-      .multipleOptionsItem {
-        border: transparent;
-
-        font-size: 1.05rem;
-        margin: 0.2rem;
-        // padding: 0.8rem;
-        a {
-          padding: 0.8rem;
-          display: block;
-          border-radius: 10px;
-          &:hover {
-            background-color: lightgray;
-          }
-        }
-      }
-    }
-  }
   .mainInfos {
     display: grid;
     grid-template: 0.3fr 0.5fr 0.8fr / 1fr 2fr;
-    .intro {
-      margin: 1rem 0.75rem;
-      display: flex;
-      flex-direction: column;
-      background-color: whitesmoke;
-      border-radius: 10px;
-      min-width: max-content;
-      p {
-        margin: 0.5rem 1rem;
-      }
-    }
+
     .userPosts {
       grid-row: span 3;
 
@@ -132,127 +48,11 @@
         border-radius: 10px;
       }
     }
-    .photosSectionContainer {
-      position: relative;
-      background-color: whitesmoke;
-      margin: 1rem 0.75rem;
-      border-radius: 10px;
-      p {
-        white-space: nowrap;
-        margin: 0.5rem 1.5rem 0 1.5rem;
-        font-size: 1.8rem;
-        font-weight: 600;
-        span {
-          position: absolute;
-          top: 1.5rem;
-          right: 1.5rem;
-
-          font-size: 1rem;
-          font-weight: 500;
-          color: royalblue;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-      .photosSection {
-        display: grid;
-        gap: 0.2rem;
-        padding: 1rem;
-        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-
-        .randomImages {
-          cursor: pointer;
-
-          align-self: center;
-          justify-self: center;
-          width: 8.5rem;
-          height: 8.5rem;
-
-          object-fit: fill;
-          &:hover {
-            filter: brightness(0.8);
-          }
-          &:first-of-type {
-            border-top-left-radius: 10px;
-          }
-          &:last-of-type {
-            border-bottom-right-radius: 10px;
-          }
-          &:nth-of-type(3) {
-            border-top-right-radius: 10px;
-          }
-          &:nth-of-type(7) {
-            border-bottom-left-radius: 10px;
-          }
-        }
-      }
-    }
-
-    .friends {
-      position: relative;
-      border-radius: 10px;
-      margin: 1rem 0.75rem;
-      background-color: whitesmoke;
-      .sectionTitle {
-        margin: 0.5rem 1.5rem 0 1.5rem;
-        font-size: 1.8rem;
-        font-weight: 600;
-        span {
-          position: absolute;
-          top: 1.5rem;
-          right: 1.5rem;
-
-          font-size: 1rem;
-          font-weight: 500;
-          color: royalblue;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-      div {
-        display: grid;
-        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-        border-radius: 10px;
-        padding: 0.5rem;
-
-        .imageContainer {
-          display: flex;
-          flex-direction: column;
-
-          img {
-            width: 8rem;
-            height: 8rem;
-            border-radius: 10px;
-
-            cursor: pointer;
-            &:hover {
-              filter: brightness(0.8);
-            }
-            justify-self: center;
-          }
-          p {
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-    }
   }
 }
 
 // nu prea am facut bine cu gridul ca sa am doua jumatati diferite
-.left {
-  position: sticky;
-  top: -300px;
-}
+
 .comments {
   .userInfo {
     display: flex;
@@ -312,9 +112,7 @@
     button {
       display: none;
     }
-    .left {
-      display: none;
-    }
+
     .userPosts {
       min-width: calc(100vw - 100px);
     }

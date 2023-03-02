@@ -1,0 +1,11 @@
+.intro {
+  margin: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  min-width: max-content;
+  p {
+    margin: 0.5rem 1rem;
+  }
+}

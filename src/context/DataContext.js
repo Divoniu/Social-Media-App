@@ -25,7 +25,7 @@ export const DataProvider = ({ children }) => {
         return [...prevState, ...overriddenIdUsers];
       });
 
-      // not to self - id-urile vor fi de la 1;
+      // note to self - id-urile vor fi de la 1;
       //listOfUsers();
       // setUsers(listUsers.results);
 
@@ -69,8 +69,6 @@ export const DataProvider = ({ children }) => {
     fetchImages();
   }, []);
   /////////////////////////////////////////////////////////////
-
-  /////////////////////////////////////
 
   const [quote, setQuote] = useState([]);
   const [err, setErr] = useState("");

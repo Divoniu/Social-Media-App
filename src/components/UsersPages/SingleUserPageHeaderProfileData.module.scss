@@ -1,0 +1,46 @@
+.userProfileCoverImage {
+  img {
+    object-fit: cover;
+    height: 350px;
+    max-width: 100%;
+    //   background-color: black;
+    // object-fit: contain;
+  }
+}
+.userProfile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .userImageAndName {
+    position: relative;
+    height: 7.5rem;
+    .userProfileImage {
+      width: 170px;
+      height: auto;
+      border-radius: 50%;
+      border: 5px solid whitesmoke;
+      position: absolute;
+      top: -40px;
+      left: 30px;
+    }
+    .userName {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-left: 12.7rem;
+      white-space: nowrap;
+    }
+  }
+  .userOptions {
+    display: flex;
+    gap: 1.5rem;
+
+    margin-right: 5rem;
+    button {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 10px;
+      border-color: transparent;
+      outline-color: transparent;
+    }
+  }
+}
