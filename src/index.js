@@ -6,7 +6,8 @@ import { BrowserRouter, HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <HashRouter>
+  <BrowserRouter basename="/Social-Media-App">
     <App />
-  </HashRouter>
+  </BrowserRouter>
 );
+// replaced browserrouter with hashrouter because the the homepage was 404 not found
