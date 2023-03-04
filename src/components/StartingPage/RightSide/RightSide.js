@@ -8,9 +8,15 @@ import DataContext from "../../../context/DataContext";
 export function RightSide() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { listOfChats, fetchUsers } = useContext(DataContext);
+  const { listOfChats, fetchUsers, users, setUsers, setIsLoading } =
+    useContext(DataContext);
+
   useEffect(() => {
-    fetchUsers();
+    if (!sessionStorage.listOfUsers) {
+      fetchUsers();
+    } else {
+      setIsLoading(false);
+    }
   }, []);
 
   return (

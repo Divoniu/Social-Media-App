@@ -8,7 +8,7 @@ export function PhotosSection({ currentUserProfile }) {
 
   const [countImages, setCountImages] = useState([]);
 
-  const randomIndex = Math.floor(Math.random() * images.length - 1);
+  const randomIndex = Math.floor(Math.random() * images.length);
   const randomImage = images[randomIndex];
 
   if (countImages.length < 9) {

@@ -1,10 +1,35 @@
 import styles from "./SingleUserPageHeaderProfileData.module.scss";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import DataContext from "../../context/DataContext";
+import { useParams } from "react-router-dom";
 
 export function SingleUserPageHeaderProfileData({ currentUserProfile }) {
-  const { getUserName } = useContext(DataContext);
+  const { getUserName, users, setListOfChats } = useContext(DataContext);
+  const sendMessageToUser = useRef();
+  const { userId } = useParams();
+  const openUserChat = () => {
+    const user = users[userId];
+    const userChatData = {
+      name: getUserName(user),
+      picture: user.picture.thumbnail,
+    };
+    setListOfChats((prevState) => {
+      const newState = [...prevState];
+      const avoidDuplicate = newState.filter(
+        (el) => el.name !== userChatData.name
+      );
 
+      const duplicateFree = [...avoidDuplicate, userChatData];
+
+      if (duplicateFree.length >= 3) {
+        duplicateFree.shift();
+
+        return duplicateFree;
+      } else {
+        return duplicateFree;
+      }
+    });
+  };
   return (
     <>
       <div className={styles.userProfileCoverImage}>
@@ -22,7 +47,9 @@ export function SingleUserPageHeaderProfileData({ currentUserProfile }) {
           <p className={styles.userName}>{getUserName(currentUserProfile)}</p>
         </div>
         <article className={styles.userOptions}>
-          <button>Message</button>
+          <button ref={sendMessageToUser} onClick={openUserChat}>
+            Message
+          </button>
           <button>Another option</button>
         </article>
       </section>

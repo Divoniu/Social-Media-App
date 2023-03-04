@@ -22,22 +22,10 @@ export function SingleUserPage() {
       return newState;
     });
   }, [userId]);
-  // nu merge pentru ca eu am list of comments si aici am timelinepost ca state
+  // nu merge pentru ca eu am list of comments si aici am timelinepost ca state asa ca I passed the these states as listOfComments catre typeCommentOrPost si ListOfComments, care aia importa
   //am uitat sa mai adaug birthday
   const [timelinePost, setTimelinePost] = useState([]);
-  const addCommentToTimeline = (event) => {
-    if (event.keyCode === 13) {
-      setTimelinePost((prevState) => {
-        const myComment = {
-          id: prevState.length,
-          username: "Ovidiu Nicolaescu",
-          date: "right now",
-          comment: postInFriendTimeline.current.value,
-        };
-        return [myComment, ...prevState];
-      });
-    }
-  };
+
   return (
     <div className={styles.userProfileContainer}>
       {Object.keys(currentUserProfile).length !== 0 && (
@@ -62,11 +50,15 @@ export function SingleUserPage() {
                   onKeyUp={addCommentToTimeline}
                 />
               </div> */}
-              <TypeCommentOrPost />
+              <TypeCommentOrPost setListOfComments={setTimelinePost} />
               {/* ce era mai sus avea si putin styling pe care trebuie sa-l adaug la type commentorpost oare pot suprascrie stilul? */}
 
               <div className={styles.postsTimeline}>
                 <p className={styles.sectionTitle}>Timeline</p>
+                <ListOfComments
+                  listOfComments={timelinePost}
+                  setListOfComments={setTimelinePost}
+                />
                 {/* //////////////////// */}
                 {/* {timelinePost.map((comment, idx) => {
                   return (

@@ -18,7 +18,10 @@ const CommentSection = () => {
   return (
     <section>
       <TypeCommentOrPost setListOfComments={setListOfComments} />
-      <ListOfComments listOfComments={listOfComments} />
+      <ListOfComments
+        listOfComments={listOfComments}
+        setListOfComments={setListOfComments}
+      />
     </section>
   );
 };

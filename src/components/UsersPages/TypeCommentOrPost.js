@@ -2,17 +2,22 @@ import styles from "./TypeCommentOrPost.module.scss";
 import { useRef } from "react";
 export function TypeCommentOrPost({ setListOfComments }) {
   const postTheComment = useRef();
+
+  const checkForEmptyComments = /^\s*$/g;
   const addComment = (event) => {
-    if (event.keyCode === 13) {
+    if (
+      event.keyCode === 13 &&
+      !checkForEmptyComments.test(postTheComment.current.value.trim())
+    ) {
       setListOfComments((prevState) => {
         const myComment = {
           id: prevState.length,
           username: "Ovidiu Nicolaescu",
-          date: "right now",
+          date: "de pus data ",
           comment: postTheComment.current.value,
         };
         postTheComment.current.value = "";
-        return [myComment, ...prevState];
+        return [...prevState, myComment];
       });
     }
   };

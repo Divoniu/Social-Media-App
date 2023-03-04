@@ -8,16 +8,21 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import CommentIcon from "@mui/icons-material/Comment";
 import CommentSection from "../Comments/CommentSection";
 
+// cand folosesc functia de like mi se rerandeaza toata commponenta post item
+//oare daca folosesc useCAllback sau useMemo as putea reduce nr de rerenders?
+
 export function PostItem({ currentUserProfile }) {
   const { getUserName, getRandomDate, images, quote, users } =
     useContext(DataContext);
 
   //aici pus state-urile aastea ca sa nu mi mai rerandeze constant imagini
+
   const [randomQuote, setRandomQuote] = useState(
-    quote[Math.floor(Math.random() * quote.length - 1)].content
+    quote[Math.floor(Math.random() * quote.length)].text
   );
+
   const [randomImage, setRandomImage] = useState(
-    images[Math.floor(Math.random() * images.length - 1)].download_url
+    images[Math.floor(Math.random() * images.length)].download_url
   );
   const [isLiked, setIsLiked] = useState(false);
   const [like, setLikes] = useState(Math.floor(Math.random() * 100));
@@ -29,6 +34,7 @@ export function PostItem({ currentUserProfile }) {
       return !prevState;
     });
   };
+
   // am un counter de comentarii si un array in care salvez comentariile fiecarei postari
   const postTheComment = useRef();
 

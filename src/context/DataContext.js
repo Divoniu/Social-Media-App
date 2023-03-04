@@ -5,11 +5,17 @@ const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [listOfChats, setListOfChats] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(() => {
+    return JSON.parse(sessionStorage.getItem("listOfUsers"));
+  });
   const [fetchError, setFetchError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const saveItems = (newItems, saveName) => {
+    sessionStorage.setItem(saveName, JSON.stringify(newItems));
+  };
+  //JSON.parse(sessionStorage.getItem("listOfUsers"))
   const fetchUsers = async () => {
     try {
       const response = await fetch(`${API_URL_USERS}?results=20`);
@@ -21,13 +27,11 @@ export const DataProvider = ({ children }) => {
         id: `${idx}`,
       }));
 
-      setUsers((prevState) => {
-        return [...prevState, ...overriddenIdUsers];
+      setUsers(() => {
+        const newState = [...overriddenIdUsers];
+        saveItems(newState, "listOfUsers");
+        return newState;
       });
-
-      // note to self - id-urile vor fi de la 1;
-      //listOfUsers();
-      // setUsers(listUsers.results);
 
       setFetchError(null);
     } catch (err) {
@@ -44,7 +48,9 @@ export const DataProvider = ({ children }) => {
     return `${first} ${last}`;
   };
   // ////////////////////////////////////////////////////
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(() => {
+    return JSON.parse(sessionStorage.getItem("listOfImages"));
+  });
   const [loadingImages, setLoadingImages] = useState(true);
   const fetchImages = async () => {
     try {
@@ -55,7 +61,9 @@ export const DataProvider = ({ children }) => {
       const listImages = await response.json();
 
       setImages(() => {
-        return [...listImages];
+        const newState = [...listImages];
+        saveItems(newState, "listOfImages");
+        return newState;
       });
 
       setFetchError(null);
@@ -66,23 +74,31 @@ export const DataProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    fetchImages();
+    if (!sessionStorage.listOfImages) {
+      fetchImages();
+    } else {
+      setLoadingImages(false);
+    }
   }, []);
   /////////////////////////////////////////////////////////////
 
-  const [quote, setQuote] = useState([]);
+  const [quote, setQuote] = useState(() => {
+    return JSON.parse(sessionStorage.getItem("listOfQuotes"));
+  });
   const [err, setErr] = useState("");
   const fetchQuotes = async () => {
     try {
-      for (let i = 0; i < 10; i++) {
-        const response = await fetch("https://api.quotable.io/random");
-        if (!response.ok) throw Error("Couldn't load the images");
-        const listQuotes = await response.json();
+      const response = await fetch("https://type.fit/api/quotes");
+      if (!response.ok) throw Error("Couldn't load the images");
+      const listQuotes = await response.json();
+      const shortListOfQuotes = await listQuotes.slice(0, 20);
+      setQuote(() => {
+        const newState = [...shortListOfQuotes];
+        saveItems(shortListOfQuotes, "listOfQuotes");
 
-        setQuote((prevState) => {
-          return [...prevState, listQuotes];
-        });
-      }
+        return newState;
+      });
+
       setErr(null);
     } catch (err) {
       err(err.message);
@@ -91,7 +107,9 @@ export const DataProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    fetchQuotes();
+    if (!sessionStorage.listOfQuotes) {
+      fetchQuotes();
+    }
   }, []);
 
   // am f multe rerenders

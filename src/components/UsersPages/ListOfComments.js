@@ -1,6 +1,20 @@
 import styles from "./ListOfComments.module.scss";
 import { Link } from "react-router-dom";
-export function ListOfComments({ listOfComments }) {
+
+export function ListOfComments({ listOfComments, setListOfComments }) {
+  // daca folosesc ref in loc de eventTarget imi ia acelasi index mereu
+  const removeComment = (e) => {
+    const spanac = e.currentTarget.getAttribute("index");
+
+    setListOfComments((prevState) => {
+      const newState = prevState.filter((comment) => comment.id != spanac);
+
+      console.log(newState);
+      console.log(spanac);
+      return [...newState];
+    });
+  };
+
   return (
     <>
       {listOfComments.map((comment, idx) => {
@@ -17,6 +31,14 @@ export function ListOfComments({ listOfComments }) {
               <Link to="/">
                 <p className={styles.username}>{comment.username}</p>
               </Link>
+              <button
+                index={comment.id}
+                //indexul butonului va fi egal cu id-ul atribuit comentariului inserat
+                onClick={removeComment}
+                className={styles.removeComment}
+              >
+                x
+              </button>
             </div>
             <div className={styles.commentInfo}>
               <p className={styles.comment}>{comment.comment}</p>

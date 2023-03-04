@@ -9,27 +9,52 @@ import UnfoldLessIcon from "@mui/icons-material/UnfoldLess";
 import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { display } from "@mui/system";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import DataContext from "../../../context/DataContext";
-export function UserChat({ idx }) {
+import { Message } from "@mui/icons-material";
+export function UserChat({ chatData, idx }) {
   const { listOfChats, setListOfChats } = useContext(DataContext);
   const closeUserChat = (e) => {
-    // console.dir(
+    // const chatProfilePicturePath =
     //   e.currentTarget.offsetParent.firstChild.firstChild.firstChild.children[0]
-    //     .currentSrc
-    // );
-    const chatProfilePicturePath =
-      e.currentTarget.offsetParent.firstChild.firstChild.firstChild.children[0]
-        .currentSrc;
+    //     .currentSrc;
+    // const chatProfileNamePath =
+    //   e.currentTarget.offsetParent.firstChild.firstChild.firstChild.children[1]
+    //     .children[0].textContent;
 
     setListOfChats((prevState) => {
       const newState = [...prevState];
 
       const closeChatWindow = newState.filter(
-        (el) => el.picture !== chatProfilePicturePath
+        (el) =>
+          el.picture !== chatData.picture ||
+          el.name.trim() !== chatData.name.trim()
+        // el.picture !== chatProfilePicturePath ||
+        // el.name.trim() !== chatProfileNamePath.trim()
       );
       return closeChatWindow;
     });
+  };
+  const textMessage = useRef();
+  const [chatMessages, setChatMessages] = useState([]);
+  //save them to session storage
+  const checkForEmptyComments = /^\s*$/g;
+  const sendMessageInChat = (event) => {
+    if (
+      event.keyCode === 13 &&
+      !checkForEmptyComments.test(textMessage.current.value.trim())
+    ) {
+      setChatMessages((prevState) => {
+        const myMessage = {
+          id: prevState.length,
+          username: "Ovidiu Nicolaescu",
+          date: "de pus data ",
+          comment: textMessage.current.value,
+        };
+        textMessage.current.value = "";
+        return [...prevState, myMessage];
+      });
+    }
   };
 
   return (
@@ -40,10 +65,11 @@ export function UserChat({ idx }) {
       <article className={styles.chatControlContainer}>
         <ul className={styles.chatControl}>
           <li>
-            <img src={listOfChats[idx].picture} alt="UserPic" />
+            <img src={chatData.picture} alt="UserPic" />
             {/* daca mergea duplicatefree[idx] era minunat */}
             <div className={styles.userChatInfo}>
-              <p> {listOfChats[idx].name}</p>
+              {/* <p> {listOfChats[idx].name}</p> */}
+              <p> {chatData.name}</p>
               {/* aici la nume as mai putea adauga o conditie ca daca lungimea stringului depaseste x caractere sa ii faca split si sa imi puna ... la final */}
               <p>Status</p>
               {/* tb sa fac conditie daca am un fel anume de status sau daca n-am deloc sa imi centreze numele */}
@@ -67,7 +93,12 @@ export function UserChat({ idx }) {
         </ul>
       </article>
       <article className={styles.chatBox}>
-        aici o sa fie fereastra unde vezi mesajele
+        {chatMessages.map((message, idx) => (
+          <p className={styles.comment} key={idx}>
+            {message.comment}
+          </p>
+          //idx ul de aici e problema
+        ))}
       </article>
       <article className={styles.inputMessage}>
         <textarea
@@ -75,6 +106,8 @@ export function UserChat({ idx }) {
           id=""
           cols="30"
           rows="10"
+          onKeyUp={sendMessageInChat}
+          ref={textMessage}
         ></textarea>
         <button>
           <KeyboardArrowUpIcon color="black" fontSize="medium" />
@@ -96,7 +129,7 @@ export function UserChat({ idx }) {
           <EmojiEmotionsIcon fontSize="small" />
         </li>
         <li>
-          <button>Send</button>
+          <button onClick={sendMessageInChat}>Send</button>
         </li>
         <li>
           <MoreHorizIcon />
