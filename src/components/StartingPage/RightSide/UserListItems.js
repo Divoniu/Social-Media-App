@@ -4,7 +4,6 @@ import DataContext from "../../../context/DataContext";
 export function UserListItems({ user }) {
   const { listOfChats, setListOfChats, getUserName } = useContext(DataContext);
 
-  //daca am doi useri cu aceeasi imagine de profil mi-i inchide pe amandoi
   const openUserChat = () => {
     // name: e.currentTarget.children[1].textContent,
     // picture: e.currentTarget.children[0].children[0].currentSrc,
@@ -12,10 +11,9 @@ export function UserListItems({ user }) {
     const userChatData = {
       name: getUserName(user),
       picture: user.picture.thumbnail,
-      id: listOfChats.length,
+      id: user.id,
     };
-    //nu pot filtra dupa id pentru ca e variabil
-    //console.log(userToChat);
+
     setListOfChats((prevState) => {
       // const newState = [...prevState, userChatData];
       // const checkForDuplicate = new Set(newState);
@@ -25,7 +23,6 @@ export function UserListItems({ user }) {
       const duplicateFree = listOfChats.some((user) => {
         return user.name === userChatData.name;
       });
-      console.log(duplicateFree);
 
       if (duplicateFree) {
         return newState;
@@ -72,5 +69,3 @@ export function UserListItems({ user }) {
     </li>
   );
 }
-
-//pt chat tb sa fac un event =dar nu stiu pe cine, on click sa mi se deschida o fereastra de cat cu current target imager si name

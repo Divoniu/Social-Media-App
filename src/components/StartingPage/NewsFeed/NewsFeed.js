@@ -9,6 +9,8 @@ import CommentIcon from "@mui/icons-material/Comment";
 import { useState, useRef } from "react";
 import CommentSection from "./Comments/CommentSection";
 
+import { useContext } from "react";
+import DataContext from "../../../context/DataContext";
 export function NewsFeed(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [like, setLikes] = useState(Math.floor(Math.random() * 100));
@@ -18,6 +20,7 @@ export function NewsFeed(props) {
   const [comments, setComments] = useState();
 
   const commentDescription = useRef();
+  const { users, getUserName } = useContext(DataContext);
 
   const handleLike = () => {
     if (!isLiked) {
@@ -55,24 +58,23 @@ export function NewsFeed(props) {
       });
     }
   };
+  const randomUserPost = users[Math.floor(Math.random() * users.length)];
   return (
     <>
       <div className={styles.mainPost}>
-        <div className={styles.postInFeed}>
-          <CommentSection></CommentSection>
-        </div>
+        <div className={styles.postInFeed}></div>
 
         <div className={styles.userInfo}>
           <div className={styles.userInfoContainer}>
-            <Link to="/me">
+            <Link to={`/friends/${randomUserPost.id}`}>
               <img
-                src={require("./assets/profile.jpeg")}
+                src={randomUserPost.picture.thumbnail}
                 alt="Profile Picture"
                 className={styles.profilePictureImg}
               ></img>
             </Link>
-            <Link to="/me">
-              <p>Ovidiu Nicolaescu</p>
+            <Link to={`/friends/${randomUserPost.id}`}>
+              <p>{getUserName(randomUserPost)}</p>
             </Link>
           </div>
 

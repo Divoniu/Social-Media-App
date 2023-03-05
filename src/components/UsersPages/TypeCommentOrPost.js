@@ -3,6 +3,12 @@ import { useRef } from "react";
 export function TypeCommentOrPost({ setListOfComments }) {
   const postTheComment = useRef();
 
+  const setDateOfPost = () => {
+    const dateRightNow = new Date(Date.now()).toLocaleString();
+
+    return dateRightNow;
+  };
+
   const checkForEmptyComments = /^\s*$/g;
   const addComment = (event) => {
     if (
@@ -13,7 +19,7 @@ export function TypeCommentOrPost({ setListOfComments }) {
         const myComment = {
           id: prevState.length,
           username: "Ovidiu Nicolaescu",
-          date: "de pus data ",
+          date: setDateOfPost(),
           comment: postTheComment.current.value,
         };
         postTheComment.current.value = "";

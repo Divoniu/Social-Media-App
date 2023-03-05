@@ -9,8 +9,6 @@ export function ListOfComments({ listOfComments, setListOfComments }) {
     setListOfComments((prevState) => {
       const newState = prevState.filter((comment) => comment.id != spanac);
 
-      console.log(newState);
-      console.log(spanac);
       return [...newState];
     });
   };

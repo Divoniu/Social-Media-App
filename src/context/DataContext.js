@@ -22,10 +22,10 @@ export const DataProvider = ({ children }) => {
       if (!response.ok) throw Error("Couldn't load the users list");
       const listUsers = await response.json();
 
-      const overriddenIdUsers = listUsers.results.map((user, idx) => ({
-        ...user,
-        id: `${idx}`,
-      }));
+      // overriddenIdUSers nu face nimic aparent
+      const overriddenIdUsers = listUsers.results.map((user, idx) => {
+        return [{ ...user, id: `${idx + 1}` }];
+      });
 
       setUsers(() => {
         const newState = [...overriddenIdUsers];
@@ -40,7 +40,7 @@ export const DataProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
-
+  console.log(users);
   const getUserName = (userInfo) => {
     const {
       name: { first, last },

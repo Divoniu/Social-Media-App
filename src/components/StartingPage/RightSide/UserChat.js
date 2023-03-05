@@ -14,6 +14,7 @@ import DataContext from "../../../context/DataContext";
 import { Message } from "@mui/icons-material";
 export function UserChat({ chatData, idx }) {
   const { listOfChats, setListOfChats } = useContext(DataContext);
+
   const closeUserChat = (e) => {
     // const chatProfilePicturePath =
     //   e.currentTarget.offsetParent.firstChild.firstChild.firstChild.children[0]
@@ -37,6 +38,8 @@ export function UserChat({ chatData, idx }) {
   };
   const textMessage = useRef();
   const [chatMessages, setChatMessages] = useState([]);
+  const [sendMessageButtonClicked, setSendMessageButtonClicked] =
+    useState(true);
   //save them to session storage
   const checkForEmptyComments = /^\s*$/g;
   const sendMessageInChat = (event) => {
@@ -52,6 +55,23 @@ export function UserChat({ chatData, idx }) {
           comment: textMessage.current.value,
         };
         textMessage.current.value = "";
+        return [...prevState, myMessage];
+      });
+    }
+  };
+
+  // not that dry, am nevoie ca la functie de sus sa ii adaug un click state si un ||
+  const pressSendMessage = () => {
+    if (!checkForEmptyComments.test(textMessage.current.value.trim())) {
+      setChatMessages((prevState) => {
+        const myMessage = {
+          id: prevState.length,
+          username: "Ovidiu Nicolaescu",
+          date: "de pus data ",
+          comment: textMessage.current.value,
+        };
+        textMessage.current.value = "";
+
         return [...prevState, myMessage];
       });
     }
@@ -129,7 +149,7 @@ export function UserChat({ chatData, idx }) {
           <EmojiEmotionsIcon fontSize="small" />
         </li>
         <li>
-          <button onClick={sendMessageInChat}>Send</button>
+          <button onClick={pressSendMessage}>Send</button>
         </li>
         <li>
           <MoreHorizIcon />

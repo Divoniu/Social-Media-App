@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import DataContext from "../../context/DataContext";
 import { useContext } from "react";
 import { LeftSide } from "./LeftSide/LeftSide";
+import CommentSection from "./NewsFeed/Comments/CommentSection";
 export function StartingPage() {
   const posts = useFetch("https://jsonplaceholder.typicode.com/posts");
 
@@ -15,6 +16,7 @@ export function StartingPage() {
         <LeftSide />
       </aside>
       <div className={styles.newsFeed}>
+        <CommentSection />
         {posts &&
           posts.map((post) => {
             return <NewsFeed postData={post} key={post.id} />;

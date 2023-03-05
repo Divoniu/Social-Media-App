@@ -22,7 +22,7 @@ export function SingleUserPage() {
       return newState;
     });
   }, [userId]);
-  // nu merge pentru ca eu am list of comments si aici am timelinepost ca state asa ca I passed the these states as listOfComments catre typeCommentOrPost si ListOfComments, care aia importa
+
   //am uitat sa mai adaug birthday
   const [timelinePost, setTimelinePost] = useState([]);
 
@@ -83,9 +83,6 @@ export function SingleUserPage() {
                   );
                 })} */}
 
-                {/* <ListOfComments />nu merge asta */}
-                {/* nu pot pune comment section pt ca tb sa am si timelineul acolo */}
-                {/* /////////////////// */}
                 <Posts currentUserProfile={currentUserProfile} />
               </div>
             </section>
@@ -96,7 +93,5 @@ export function SingleUserPage() {
   );
 }
 // cred ca ar trebui sa fac o componenta reutilizabila de comments sau sa o modific pe cea a lui sergiu pentru ca o sa tot am nevoie de ea.
-
-// trebuie sa fac sa salvez userii in session storage
 
 // treubuie sa mai import din baza de date workplaces locuri de munca si sa le trec la infos

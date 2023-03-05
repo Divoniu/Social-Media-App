@@ -15,8 +15,8 @@ export function FriendsSection() {
       <div>
         {users.map(
           (user, idx) =>
-            idx <= 9 &&
-            user.id !== userId && (
+            user.id !== userId &&
+            idx <= 9 && (
               <div className={styles.imageContainer} key={idx}>
                 <img src={user.picture.large} alt="friends" />
                 <p>{getUserName(user)}</p>

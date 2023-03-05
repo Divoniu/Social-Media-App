@@ -27,7 +27,7 @@ export function RightSide() {
       </aside>
       <section className={styles.userChat}>
         {listOfChats.map((chatData, idx) => (
-          <UserChat chatData={chatData} key={idx} idx={idx} />
+          <UserChat chatData={chatData} key={chatData.id} idx={idx} />
         ))}
       </section>
     </>
