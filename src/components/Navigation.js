@@ -22,7 +22,7 @@ export function Navigation() {
         <nav>
           <ul className={styles.menu}>
             <li className={styles.menuItem}>
-              {!isLoggedIn && <NavLink to="/me">My Profile</NavLink>}
+              {!isLoggedIn && <NavLink to="/me/0">My Profile</NavLink>}
               {/* aici tb sa pun alt path pt pagian mea de profil */}
             </li>
 

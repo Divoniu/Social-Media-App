@@ -17,7 +17,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
-            <Route path="/me" element={<MyProfile />}></Route>
+            <Route path="/me/:userId" element={<MyProfile />}></Route>
+            {/* problema e ca daca pun me/orice id va ramane pe pagina mea, */}
             <Route path="/auth" element={<AuthPage />} />
             <Route path="/friends" element={<UsersPage />} />
             <Route path="/friends/:userId" element={<SingleUserPage />} />

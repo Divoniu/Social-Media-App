@@ -25,7 +25,7 @@ export function SingleUserPage() {
 
   //am uitat sa mai adaug birthday
   const [timelinePost, setTimelinePost] = useState([]);
-
+  console.log(currentUserProfile);
   return (
     <div className={styles.userProfileContainer}>
       {Object.keys(currentUserProfile).length !== 0 && (

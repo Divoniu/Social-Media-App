@@ -30,6 +30,7 @@ export function SingleUserPageHeaderProfileData({ currentUserProfile }) {
       }
     });
   };
+
   return (
     <>
       <div className={styles.userProfileCoverImage}>

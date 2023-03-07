@@ -3,11 +3,31 @@ const API_URL_USERS = "https://randomuser.me/api";
 
 const DataContext = createContext({});
 
+// daca ii pun id lui ME o ia razna
 export const DataProvider = ({ children }) => {
+  const ME = {
+    name: { first: "Ovidiu", last: "Nicolaescu" },
+    location: { city: "Bucharest", country: "Romania", postcode: "00000" },
+    email: "divoniu@yahoo.ro",
+    dob: { date: "1991-04-06T11:31:20.212Z", age: 26 },
+    registered: { date: "2007-01-13", age: 16 },
+    phone: "058-13449114",
+    picture: {
+      large: "./../StartingPage/NewsFeed/assets/profile.jpeg",
+      medium: "./../StartingPage/NewsFeed/assets/profile.jpeg",
+      thumbnail: "./../StartingPage/NewsFeed/assets/profile.jpeg",
+    },
+    id: "0",
+  };
+  //restul userilor au id-ul ca string
+
   const [listOfChats, setListOfChats] = useState([]);
   const [users, setUsers] = useState(() => {
-    return JSON.parse(sessionStorage.getItem("listOfUsers"));
+    return JSON.parse(sessionStorage.getItem("listOfUsers")) || [];
   });
+  // daca nu folosesc operatorul || nu imi va functiona voi primi valoarea null in continuare, nu se suprascrie tipul
+  // useState([]);
+
   const [fetchError, setFetchError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,11 +41,10 @@ export const DataProvider = ({ children }) => {
       const response = await fetch(`${API_URL_USERS}?results=20`);
       if (!response.ok) throw Error("Couldn't load the users list");
       const listUsers = await response.json();
-
-      // overriddenIdUSers nu face nimic aparent
-      const overriddenIdUsers = listUsers.results.map((user, idx) => {
-        return [{ ...user, id: `${idx + 1}` }];
-      });
+      const overriddenIdUsers = listUsers.results.map((user, idx) => ({
+        ...user,
+        id: `${idx}`,
+      }));
 
       setUsers(() => {
         const newState = [...overriddenIdUsers];
@@ -134,6 +153,7 @@ export const DataProvider = ({ children }) => {
 
         loadingImages,
         quote,
+        ME,
       }}
     >
       {children}

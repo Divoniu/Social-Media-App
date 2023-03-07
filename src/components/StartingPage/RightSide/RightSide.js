@@ -15,6 +15,9 @@ export function RightSide() {
     if (!sessionStorage.listOfUsers) {
       fetchUsers();
     } else {
+      // setUsers(() => {
+      //   return JSON.parse(sessionStorage.getItem("listOfUsers"));
+      // }); partea asta este valabila daca initializarea users din datacontext ar fi doar []
       setIsLoading(false);
     }
   }, []);

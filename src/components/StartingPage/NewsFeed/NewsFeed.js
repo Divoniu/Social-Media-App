@@ -65,18 +65,20 @@ export function NewsFeed(props) {
         <div className={styles.postInFeed}></div>
 
         <div className={styles.userInfo}>
-          <div className={styles.userInfoContainer}>
-            <Link to={`/friends/${randomUserPost.id}`}>
-              <img
-                src={randomUserPost.picture.thumbnail}
-                alt="Profile Picture"
-                className={styles.profilePictureImg}
-              ></img>
-            </Link>
-            <Link to={`/friends/${randomUserPost.id}`}>
-              <p>{getUserName(randomUserPost)}</p>
-            </Link>
-          </div>
+          {users.length > 0 && (
+            <div className={styles.userInfoContainer}>
+              <Link to={`/friends/${randomUserPost.id}`}>
+                <img
+                  src={randomUserPost.picture.thumbnail}
+                  alt="Profile Picture"
+                  className={styles.profilePictureImg}
+                ></img>
+              </Link>
+              <Link to={`/friends/${randomUserPost.id}`}>
+                <p>{getUserName(randomUserPost)}</p>
+              </Link>
+            </div>
+          )}
 
           <div className={styles.contextMenu}>
             <MoreHorizIcon></MoreHorizIcon>
