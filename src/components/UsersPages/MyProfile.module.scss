@@ -1,0 +1,9 @@
+.userProfileContainer {
+  margin: 5vh 15vw;
+  border: 1px solid black;
+  min-width: fit-content;
+  .mainInfos {
+    display: grid;
+    grid-template: 0.3fr 0.5fr 0.8fr / 1fr 2fr;
+  }
+}

@@ -5,6 +5,8 @@ const DataContext = createContext({});
 
 // daca ii pun id lui ME o ia razna
 export const DataProvider = ({ children }) => {
+  const profilePicture =
+    "https://lh3.googleusercontent.com/gPnzc8ifJv8UGzMrnTUv4vqXGyDLEzFYfjz2gnnP9yqFesgTrV3vZCovUprsGOdb3wCdULJr5OPztearphs9qXEDXeZz1QW-0ktCulTFPuGAdgSIBKINfDKA9XC2z_soNqcr2JsirF9BZTs_4qdl6FOeLA3sDJCHZj7KJoFzCgueNVWmc56ChUdVTkh6-LIQnWe5870KM4k6qoKr83mSSHP3-aXIWYyXEKDa7iQRKr4rAv0qUzcwoc8i7yXMfNIziVqJKTew6euLprmgFVDfNyXeUk7Grm9FsANHf736ZLcxiWD1u0msvMLNx6ammaelh9oaYz6ZASncXKP28ZEbvh8Zmf_2iGsMGenDyFo5fHCfSRicZgse-GKPSMzCjns6lQ3-kRAyR0GeOR3XsXNoaXu_oof4zbhwfjWxjKZENXMPdjSKkYzthgrhbjk9GxhuNC0NM1z3E9XCTQnPeQnsLMVo95JQ-ah3CCtLG5SFPXM6jyjx7L6j4B3nl1K55lIACHWgQetPhQOAhU-5ovWcVvSrqDvsg9CI47DYSod6L9jaTN2OC1y5BfdhVup6Bns4tC0KOFdeL5zN7Av3qDA6biBHjzBV4LXn48BBubj1KaiZXLlGeDQZtU1_fDO-KKPu8vH_5Igx3c-pDZE6W6TAGJwSuTiKzzL4UVbWKU5nOlVmmNV7jdFvfWIpQEl2z785iFUGrOFmaqJDDTCASBrUnk0OPPEUiJrDDUE1-TvT-x0UFfAy_BIR7QNN5P_QmE6tBqKyRy2sQWtv8BLir6GeYsBzBCwk05PlfzL9z0NDkOY6ZiQ3J-1Ye1ADOgDh7EuORJaF50fUCpw9EfuC2jRXkgB6XkNlaQWtvp8nElkCasDX_Zxz8-frFShfWFBHJo9h13NIMGxRQg1J5iqJWzCXg3YnT2Wv7a9VB1fyPgb_8fEssmCG=w694-h924-no?authuser=0";
   const ME = {
     name: { first: "Ovidiu", last: "Nicolaescu" },
     location: { city: "Bucharest", country: "Romania", postcode: "00000" },
@@ -13,9 +15,9 @@ export const DataProvider = ({ children }) => {
     registered: { date: "2007-01-13", age: 16 },
     phone: "058-13449114",
     picture: {
-      large: "./../StartingPage/NewsFeed/assets/profile.jpeg",
-      medium: "./../StartingPage/NewsFeed/assets/profile.jpeg",
-      thumbnail: "./../StartingPage/NewsFeed/assets/profile.jpeg",
+      large: profilePicture,
+      medium: profilePicture,
+      thumbnail: profilePicture,
     },
     id: "0",
   };
@@ -43,7 +45,7 @@ export const DataProvider = ({ children }) => {
       const listUsers = await response.json();
       const overriddenIdUsers = listUsers.results.map((user, idx) => ({
         ...user,
-        id: `${idx}`,
+        id: `${idx + 1}`,
       }));
 
       setUsers(() => {
