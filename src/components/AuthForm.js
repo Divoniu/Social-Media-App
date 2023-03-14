@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./AuthForm.module.scss";
 import axios from "axios";
+import DataContext from "../context/DataContext";
 export function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
-
+  const { isLoggedIn, setIsLoggedIn } = useContext(DataContext);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 

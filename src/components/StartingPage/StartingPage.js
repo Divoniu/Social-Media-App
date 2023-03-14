@@ -9,6 +9,7 @@ import { LeftSide } from "./LeftSide/LeftSide";
 import CommentSection from "./NewsFeed/Comments/CommentSection";
 export function StartingPage() {
   const posts = useFetch("https://jsonplaceholder.typicode.com/posts");
+  const { authUser } = useContext(DataContext);
 
   return (
     <section className={styles.mainContainer}>
@@ -17,7 +18,8 @@ export function StartingPage() {
       </aside>
       <div className={styles.newsFeed}>
         <CommentSection />
-        {posts &&
+        {authUser &&
+          posts &&
           posts.map((post) => {
             return <NewsFeed postData={post} key={post.id} />;
           })}

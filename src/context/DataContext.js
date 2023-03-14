@@ -21,6 +21,9 @@ export const DataProvider = ({ children }) => {
     },
     id: "0",
   };
+  //backend login
+  const [authUser, setAuthUser] = useState("");
+
   //restul userilor au id-ul ca string
 
   const [listOfChats, setListOfChats] = useState([]);
@@ -156,6 +159,8 @@ export const DataProvider = ({ children }) => {
         loadingImages,
         quote,
         ME,
+        authUser,
+        setAuthUser,
       }}
     >
       {children}
