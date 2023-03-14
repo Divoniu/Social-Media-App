@@ -93,6 +93,18 @@ const RegisterForm = () => {
       //creating an user automatically signs me in so I first sign out to login manually afterwards
       // signOut(auth);
     } catch (error) {
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          setErrMsg(() => {
+            return "This user already exists";
+          });
+
+          break;
+        default:
+          setErrMsg(() => {
+            return "Something went wrong, something that I didn't cover ";
+          });
+      }
       console.log(error);
     }
   };
@@ -133,7 +145,7 @@ const RegisterForm = () => {
     <div className={styles.authenticationPage}>
       {success ? (
         <section className={styles.formContainer}>
-          <h1>Account created with success!</h1>
+          <h1>{errMsg}</h1>
           <p>
             <Link
               to="/authentication"
