@@ -3,6 +3,8 @@ import styles from "./RegisterForm.module.scss";
 import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -24,7 +26,10 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const { authUser } = useContext(DataContext);
   const userRef = useRef();
+  const passwordRef = useRef();
+  const matchPasswordRef = useRef();
   const errRef = useRef();
+
   // daca primesc eroare sa primesc focus pe eroare pt accesibilitate
 
   const [user, setUser] = useState("");
@@ -41,7 +46,9 @@ const RegisterForm = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  //in caz ca sign up ul se face cu succes imi afiseaza asta...dar de fapt imi afiseaza daca signupul imi da eroare de cont deja existent
   const [isLoginPage, setIsLoginPage] = useState(true);
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
   useEffect(() => {
     userRef.current.focus();
   }, []);
@@ -49,16 +56,14 @@ const RegisterForm = () => {
 
   useEffect(() => {
     const result = USER_REGEX.test(user);
-    // console.log(result);
-    // console.log(user);
+
     setValidName(result);
   }, [user]);
   //check validation of the username
 
   useEffect(() => {
     const result = PASSWORD_REGEX.test(password);
-    // console.log(result);
-    // console.log(password);
+
     setValidPassword(result);
     const match = password === matchPassword;
     setValidMatch(match);
@@ -82,6 +87,7 @@ const RegisterForm = () => {
     });
     setIsLoginPage((prevState) => {
       return !prevState;
+      //potentially useless  - setsuccess and setisloginpage
     });
     try {
       const response = await createUserWithEmailAndPassword(
@@ -102,11 +108,39 @@ const RegisterForm = () => {
           break;
         default:
           setErrMsg(() => {
-            return "Something went wrong, something that I didn't cover ";
+            return "Something went wrong, something I didn't throw an error for";
           });
       }
+
+      //nu e cea mai corecta scriere dar e de testat
+      // daca le pun pe astea nu imi mai afiseaza eroarea
       console.log(error);
+    } finally {
     }
+  };
+
+  const resetForm = () => {
+    setUser(() => {
+      return "";
+    });
+    setPassword(() => {
+      return "";
+    });
+    setMatchPassword(() => {
+      return "";
+    });
+    setValidName(() => {
+      return false;
+    });
+    setValidPassword(() => {
+      return false;
+    });
+    setValidMatch(() => {
+      return false;
+    });
+    setPasswordVisibility(() => {
+      return false;
+    });
   };
 
   const handleSignIn = async (e) => {
@@ -116,7 +150,7 @@ const RegisterForm = () => {
       const response = await signInWithEmailAndPassword(auth, user, password);
       console.log(response.user);
 
-      navigate("/home");
+      //navigate("/home");
       // nu are rost sa pun navigate intr-un if pentru ca nu imi va face login multumita erorilor pe care le prinde firebaseul pentru care tb sa fac un display
     } catch (error) {
       console.log(error.code);
@@ -137,6 +171,7 @@ const RegisterForm = () => {
           });
           break;
       }
+    } finally {
     }
   };
 
@@ -150,6 +185,7 @@ const RegisterForm = () => {
             <Link
               to="/authentication"
               onClick={() => {
+                resetForm();
                 setIsLoginPage(true);
                 setSuccess(false);
               }}
@@ -173,7 +209,7 @@ const RegisterForm = () => {
             onSubmit={isLoginPage ? handleSignIn : handleSignUp}
           >
             <label htmlFor="username">
-              Username:
+              E-mail:
               <span
                 className={validName ? `${styles.valid}` : `${styles.hide}`}
               >
@@ -199,20 +235,23 @@ const RegisterForm = () => {
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
-            <p
-              id="uidnote"
-              className={
-                userFocus && user && !validName
-                  ? `${styles.instructions}`
-                  : `${styles.offscreen}`
-              }
-            >
-              <InfoRoundedIcon />
-              4 to 24 characters. <br />
-              Must begin with a letter. <br />
-              Letters, numbers, underscores, hyphens allowed.
-            </p>
-
+            {!isLoginPage && (
+              <p
+                id="uidnote"
+                className={
+                  userFocus && user && !validName
+                    ? `${styles.instructions}`
+                    : `${styles.offscreen}`
+                }
+              >
+                <InfoRoundedIcon />
+                <span className={styles.infoMessage}>
+                  4 to 24 characters. <br />
+                  Must begin with a letter. <br />
+                  Letters, numbers, underscores, hyphens allowed.
+                </span>
+              </p>
+            )}
             <label htmlFor="password">
               Password:
               <span
@@ -230,35 +269,58 @@ const RegisterForm = () => {
                 <CancelRoundedIcon />
               </span>
             </label>
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              aria-invalid={validPassword ? "false" : "true"}
-              aria-describedby="passwordnote"
-              onFocus={() => setPasswordFocus(true)}
-              onBlur={() => setPasswordFocus(false)}
-            />
-            <p
-              id="passwordnote"
-              className={
-                passwordFocus && !validPassword
-                  ? `${styles.instructions}`
-                  : `${styles.offscreen}`
-              }
-            >
-              <InfoRoundedIcon />
-              8 to 24 characters. <br />
-              Must include uppercase and lowercase letters, a number and a
-              special character. <br />
-              Allowed special characters:&nbsp;
-              <span aria-label="exclamation mark">!</span>
-              <span aria-label="at symbol">@</span>
-              <span aria-label="hashtag">#</span>
-              <span aria-label="dollar sign">$</span>
-              <span aria-label="percent">%</span>
-            </p>
+            <div className={styles.inputPasswordContainer}>
+              <input
+                type={passwordVisibility ? "text" : "password"}
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                ref={passwordRef}
+                aria-invalid={validPassword ? "false" : "true"}
+                aria-describedby="passwordnote"
+                onFocus={() => setPasswordFocus(true)}
+                onBlur={() => setPasswordFocus(false)}
+              />
+              <button
+                type="button"
+                className={styles.visibilityIcon}
+                onClick={() => {
+                  setPasswordVisibility((prevState) => {
+                    return !prevState;
+                  });
+                }}
+              >
+                {passwordVisibility ? (
+                  <VisibilityIcon />
+                ) : (
+                  <VisibilityOffIcon />
+                )}
+              </button>
+            </div>
+
+            {!isLoginPage && (
+              <p
+                id="passwordnote"
+                className={
+                  passwordFocus && !validPassword
+                    ? `${styles.instructions}`
+                    : `${styles.offscreen}`
+                }
+              >
+                <InfoRoundedIcon />
+                <span className={styles.infoMessage}>
+                  8 to 24 characters. <br />
+                  Must include uppercase and lowercase letters, a number and a
+                  special character. <br />
+                  Allowed special characters:&nbsp;
+                  <span aria-label="exclamation mark">!</span>
+                  <span aria-label="at symbol">@</span>
+                  <span aria-label="hashtag">#</span>
+                  <span aria-label="dollar sign">$</span>
+                  <span aria-label="percent">%</span>
+                </span>
+              </p>
+            )}
             {!isLoginPage && (
               <>
                 <label htmlFor="confirm_password">
@@ -283,15 +345,17 @@ const RegisterForm = () => {
                   </span>
                 </label>
                 <input
-                  type="password"
+                  type={passwordVisibility ? "text" : "password"}
                   id="confirm_password"
                   onChange={(e) => setMatchPassword(e.target.value)}
                   required
+                  ref={matchPasswordRef}
                   aria-invalid={validMatch ? "false" : "true"}
                   aria-describedby="confrimnote"
                   onFocus={() => setMatchFocus(true)}
                   onBlur={() => setMatchFocus(false)}
                 />
+
                 <p
                   id="confirmnote"
                   className={
@@ -301,12 +365,16 @@ const RegisterForm = () => {
                   }
                 >
                   <InfoRoundedIcon />
-                  Must match the password input field!
+                  <span className={styles.infoMessage}>
+                    Must match the password input field!
+                  </span>
                 </p>
               </>
             )}
 
             <button
+              className={styles.submitFormButton}
+              type="submit"
               disabled={
                 !validName || !validPassword || (!isLoginPage && !validMatch)
                   ? true
@@ -323,6 +391,16 @@ const RegisterForm = () => {
 
           <p
             onClick={() => {
+              if (userRef.current) {
+                userRef.current.value = "";
+              }
+              if (passwordRef.current) {
+                passwordRef.current.value = "";
+              }
+              // if (matchPasswordRef.current) {
+              //   matchPasswordRef.current.value = "";
+              // } cand fac switch nu mi se pastreaza valoarea de la confirm password
+              resetForm();
               setIsLoginPage((prevState) => {
                 return !prevState;
               });

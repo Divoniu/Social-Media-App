@@ -12,6 +12,7 @@
     justify-content: flex-start;
     padding: 1rem;
     background-color: teal;
+    border-radius: 10px;
   }
 }
 
@@ -43,17 +44,20 @@ button {
 }
 
 .instructions {
+  display: flex;
+  align-items: center;
+
   font-size: 0.75rem;
   border-radius: 0.5rem;
   background: #000;
   color: #fff;
-  padding: 0.25rem;
+  padding: 0.25rem 1rem;
   position: relative;
   bottom: -10px;
 }
 
 .instructions > svg {
-  margin-right: 0.25rem;
+  margin: 0 0.25rem;
 }
 
 .offscreen {
@@ -92,4 +96,35 @@ button {
   &:hover {
     text-decoration: underline;
   }
+}
+.inputPasswordContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+  }
+  .visibilityIcon {
+    opacity: 0.4;
+    margin: 0 0.8rem;
+    padding: 0;
+    position: absolute;
+    background-color: transparent;
+    border: transparent;
+    outline: transparent;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
+}
+
+.submitFormButton {
+  cursor: pointer;
+}
+
+.infoMessage {
+  margin-left: 1rem;
+  text-align: justify;
+  text-justify: inter-cluster;
 }
