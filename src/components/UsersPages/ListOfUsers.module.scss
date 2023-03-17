@@ -1,6 +1,7 @@
 .listOfUsersContainer {
   margin: 5% 15%;
-  min-width: 25rem;
+
+  min-width: fit-content;
   // de testat si cu vh si vw;
   background-color: whitesmoke;
   border: 1px lightgray solid;
@@ -34,16 +35,17 @@
           border-radius: 0.3rem;
           border: transparent;
           outline-color: transparent;
-          width: 115px;
           font-weight: bolder;
         }
       }
 
       .searchBar {
+        margin-left: 0.5rem;
         padding: 0.3rem;
         border-radius: 0.3rem;
         border-color: lightgray;
         outline-color: black;
+        width: 100%;
       }
     }
   }
@@ -68,6 +70,5 @@
 
 @media only screen and (max-width: 600px) {
   .listOfUsersContainer {
-    min-width: fit-content;
   }
 }

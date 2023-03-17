@@ -44,3 +44,29 @@
     }
   }
 }
+@media only screen and (max-width: 800px) {
+  .userProfileCoverImage {
+    img {
+    }
+  }
+  .userProfile {
+    display: block;
+
+    .userImageAndName {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .userProfileImage {
+        position: static;
+        height: 8.5rem;
+        width: 8.5rem;
+      }
+      .userName {
+        margin: 0 0 0.5rem 0;
+        //  de testat mai multe fontsizes
+        font-size: min(5vw, 1.8rem);
+      }
+    }
+  }
+}

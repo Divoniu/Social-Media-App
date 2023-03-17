@@ -118,3 +118,13 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .userProfileContainer {
+    margin: 0.5rem;
+
+    .mainInfos {
+      display: block;
+    }
+  }
+}

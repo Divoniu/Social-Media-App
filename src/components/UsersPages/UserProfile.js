@@ -70,6 +70,7 @@ export function UserProfile({ user }) {
               <MoreHorizIcon />
             </button>
             <button
+              onMouseLeave={displayOptions}
               onClick={removeFriend}
               id={user.id}
               ref={buttonRef}
