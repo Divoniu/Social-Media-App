@@ -7,3 +7,12 @@
     grid-template: 0.3fr 0.5fr 0.8fr / 1fr 2fr;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .userProfileContainer {
+    margin: 0.5rem;
+    .mainInfos {
+      display: block;
+    }
+  }
+}

@@ -96,6 +96,11 @@ export function Navigation() {
                 className={`${styles.hamburgerMenuItemList} ${
                   !hamburgerOpen && styles.hide
                 }`}
+                onMouseLeave={() => {
+                  setHamburgerOpen((prevState) => {
+                    return !prevState;
+                  });
+                }}
               >
                 <Link to="/me/0">My Profile</Link>
                 <Link to="/friends">Friends</Link>
