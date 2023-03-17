@@ -208,7 +208,7 @@ const RegisterForm = () => {
             className={styles.form}
             onSubmit={isLoginPage ? handleSignIn : handleSignUp}
           >
-            <label htmlFor="username">
+            <label htmlFor="username" className={styles.inputLabel}>
               E-mail:
               <span
                 className={validName ? `${styles.valid}` : `${styles.hide}`}
@@ -252,7 +252,7 @@ const RegisterForm = () => {
                 </span>
               </p>
             )}
-            <label htmlFor="password">
+            <label htmlFor="password" className={styles.inputLabel}>
               Password:
               <span
                 className={validPassword ? `${styles.valid}` : `${styles.hide}`}
@@ -323,7 +323,7 @@ const RegisterForm = () => {
             )}
             {!isLoginPage && (
               <>
-                <label htmlFor="confirm_password">
+                <label htmlFor="confirm_password" className={styles.inputLabel}>
                   Confirm password:
                   <span
                     className={

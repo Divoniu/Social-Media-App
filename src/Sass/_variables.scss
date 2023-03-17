@@ -1,0 +1,71 @@
+//primary-palette
+
+$primary-palette: (
+  "10": #001218,
+  "20": #002e3c,
+  "30": #004a60,
+  "40": #006584,
+  "50": #0081a7,
+  "60": #00a6d9,
+  "70": #23ccff,
+  "80": #6dddff,
+  "90": #b6eeff,
+  "95": #e7f9ff,
+);
+
+//secondary-palette
+$secondary-palette: (
+  "10": #001212,
+  "20": #002e2e,
+  "30": #004949,
+  "40": #006464,
+  "50": #008080,
+  "60": #00b6b6,
+  "70": #09ffff,
+  "80": #5bffff,
+  "90": #adffff,
+  "95": #e4ffff,
+);
+//tertiary-palette
+$tertiary-palette: (
+  "10": #403e04,
+  "20": #a09b09,
+  "30": #f2eb1d,
+  "40": #f7f37d,
+  "50": #fbf9bd,
+  "60": #fdfcdc,
+  "70": #fdfce2,
+  "80": #fefde9,
+  "90": #fefef1,
+  "95": #fffef8,
+);
+$black: #000;
+$white: #fff;
+$gray30: #7c7c7c;
+$gray50: #d9d9d9;
+$gray90: #f7f7f7;
+$errorContainer: #fed9b7;
+// $errorText: #f07167; prea deschis
+// $errorTextIntense: #fc440f; prea deschis
+
+$primaryColor: map-get($primary-palette, "50");
+$secondaryColor: map-get($secondary-palette, "50");
+$tertiaryColor: map-get($tertiary-palette, "50");
+
+// box shadows
+$shadowLevel1: rgba(0, 0, 0, 0.3) 0px 1px 2px 0px,
+  rgba(0, 0, 0, 0.15) 0px 2px 6px 2px;
+$shadowLevel2: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+$shadowLevel3: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+  rgba(0, 0, 0, 0.23) 0px 6px 6px;
+$shadowLevel4: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+  rgba(0, 0, 0, 0.22) 0px 10px 10px;
+$shadowLevel5: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+  rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+$pressButtonShadow: inset 1px 2px 2px 1px rgba(0, 0, 0, 0.5);
+$buttonShadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+//
+$smallBorderRadius: 0.5rem;
+$mediumBorderRadius: 0.8rem;
+$basicBorderRadius: 1rem;

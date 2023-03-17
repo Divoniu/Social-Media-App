@@ -9,7 +9,7 @@ export function Navigation() {
   const { isLoggedIn, setIsLoggedIn, authUser, setAuthUser } =
     useContext(DataContext);
   const navigate = useNavigate();
-
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const toggleAuth = () => {
     isLoggedIn ? navigate("/") : navigate("/auth");
     setIsLoggedIn((prevState) => {
@@ -59,7 +59,7 @@ export function Navigation() {
         </Link>
 
         {authUser && (
-          <nav>
+          <nav className={styles.navigationItems}>
             <ul className={styles.menu}>
               <li className={styles.menuItem}>
                 {!isLoggedIn && <NavLink to="/me/0">My Profile</NavLink>}
@@ -73,11 +73,37 @@ export function Navigation() {
               {!isLoggedIn && <NavLink to="/chat">Requests</NavLink>}
              
             </li> */}
-              <li className={styles.menuItem} onClick={userSignOut}>
+              <li onClick={userSignOut}>
                 {<NavLink to="/authentication">Log Out</NavLink>}
               </li>
-              <li className={styles.menuItem}></li>
             </ul>
+            <div className={styles.mobileMenuContainer}>
+              <button
+                onClick={() => {
+                  setHamburgerOpen((prevState) => {
+                    return !prevState;
+                  });
+                }}
+                className={`${styles.hamburgerMenu} ${
+                  hamburgerOpen && styles.open
+                }`}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+              <section
+                className={`${styles.hamburgerMenuItemList} ${
+                  !hamburgerOpen && styles.hide
+                }`}
+              >
+                <Link to="/me/0">My Profile</Link>
+                <Link to="/friends">Friends</Link>
+                <Link onClick={userSignOut} to="/authentication">
+                  Log Out
+                </Link>
+              </section>
+            </div>
           </nav>
         )}
       </header>
