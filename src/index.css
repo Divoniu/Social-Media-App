@@ -30,3 +30,8 @@ code {
 button {
   cursor: pointer;
 }
+
+body {
+  /* body-ul nu era cat tot viewportul */
+  width: fit-content;
+}
