@@ -1,7 +1,9 @@
+@use "./../../../Sass/variables" as *;
+
 .userChat {
   width: 350px;
   height: 400px;
-  background-color: rosybrown;
+  background-color: map-get($primary-palette, "40");
   position: fixed;
   bottom: 0;
   right: 300px;
@@ -67,12 +69,19 @@
   .chatBox {
     border: 1px solid black;
     height: 55%;
+    display: flex;
+
+    flex-flow: column-reverse;
   }
   .inputMessage {
     display: flex;
     padding: 0.5rem 0 0.5rem 0.7rem;
 
     button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
       margin: 0.5rem 0.8rem 1.6rem 0.8rem;
       width: 30px;
       height: 30px;
@@ -91,20 +100,24 @@
   .chatOptions {
     padding-top: 0.3rem;
     padding-left: 0.5rem;
-    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
 
+    gap: 0.5rem;
+    height: 10%;
     li:nth-of-type(1) {
       margin-left: 0.5rem;
     }
     li:nth-of-type(5) {
       margin-left: 5.5rem;
       margin-right: 1rem;
-      margin-bottom: 0.3rem;
+
+      display: flex;
+      align-items: center;
       button {
-        padding: 0.2rem 0.7rem;
+        margin: 0;
+        font-size: 1rem;
+        padding: 0.2rem 0.5rem;
         border-radius: 10px;
         border: none;
       }
@@ -117,3 +130,5 @@
     display: none;
   }
 }
+
+// la chat am de pus iconita cu userul cand scriu tezxtul
