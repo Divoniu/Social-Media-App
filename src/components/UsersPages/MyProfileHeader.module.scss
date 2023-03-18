@@ -42,6 +42,7 @@
     .multipleOptions {
       display: flex;
       flex-direction: row;
+      justify-content: center;
       margin: 0 2rem;
       .multipleOptionsItem {
         border: transparent;
@@ -93,6 +94,7 @@
       .multipleOptions {
         .multipleOptionsItem {
           a {
+            font-size: 0.8rem;
           }
         }
       }

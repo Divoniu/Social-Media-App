@@ -1,8 +1,11 @@
+@use "./../../Sass/variables" as *;
+
 .photosSectionContainer {
   position: relative;
   background-color: whitesmoke;
   margin: 1rem 0.75rem;
   border-radius: 10px;
+  height: fit-content;
   p {
     white-space: nowrap;
     margin: 0.5rem 1.5rem 0 1.5rem;
@@ -10,12 +13,12 @@
     font-weight: 600;
     span {
       position: absolute;
-      top: 1.5rem;
+      top: 1rem;
       right: 1.5rem;
 
       font-size: 1rem;
       font-weight: 500;
-      color: royalblue;
+      color: $primaryColor;
 
       &:hover {
         text-decoration: underline;
@@ -51,6 +54,22 @@
       }
       &:nth-of-type(7) {
         border-bottom-left-radius: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .photosSectionContainer {
+    p {
+      span {
+        font-size: 0.8rem;
+      }
+    }
+    .photosSection {
+      .randomImages {
+        width: 6.5rem;
+        height: 6.5rem;
       }
     }
   }

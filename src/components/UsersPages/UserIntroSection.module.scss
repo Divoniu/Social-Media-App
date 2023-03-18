@@ -4,7 +4,8 @@
   flex-direction: column;
   background-color: whitesmoke;
   border-radius: 10px;
-  min-width: max-content;
+  max-width: fit-content;
+
   p {
     margin: 0.5rem 1rem;
   }

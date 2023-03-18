@@ -33,5 +33,5 @@ button {
 
 body {
   /* body-ul nu era cat tot viewportul */
-  width: fit-content;
+  overflow: visible;
 }

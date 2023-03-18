@@ -1,8 +1,8 @@
 .userProfileContainer {
   margin: 5vh 15vw;
   border: 1px solid black;
+  // min-width: fit-content; imi produce dereglaje pe mobile
   min-width: fit-content;
-
   //do the responsive
 
   .mainInfos {
@@ -121,8 +121,9 @@
 
 @media only screen and (max-width: 800px) {
   .userProfileContainer {
-    margin: 0.5rem;
-
+    margin: 0rem;
+    min-width: auto;
+    width: 100vw;
     .mainInfos {
       display: block;
     }

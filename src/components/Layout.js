@@ -9,7 +9,7 @@ export function Layout(props) {
     <>
       <Navigation></Navigation>
       {authUser && <RightSide />}
-      <main>
+      <main style={{ display: "flex", justifyContent: "center" }}>
         {props.children}
         {/* treci iar prin asta. prin props pot transmite mai departe informatia din interiorul tagurilor layour din app*/}
       </main>

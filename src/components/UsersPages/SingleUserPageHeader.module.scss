@@ -9,6 +9,7 @@
   .multipleOptions {
     display: flex;
     flex-direction: row;
+
     margin: 0 2rem;
     .multipleOptionsItem {
       border: transparent;
@@ -23,6 +24,20 @@
         &:hover {
           background-color: lightgray;
         }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .userProfileHeader {
+    max-width: 100vw;
+  }
+  .multipleOptions {
+    justify-content: center;
+    .multipleOptionsItem {
+      a {
+        font-size: 0.8rem;
       }
     }
   }

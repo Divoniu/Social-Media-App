@@ -13,7 +13,8 @@ header {
   align-items: center;
   flex-grow: 1;
   padding: 0 10%;
-  min-width: 100vw;
+
+  max-width: 100vw;
 
   .logo {
     font-size: 2rem;
@@ -42,6 +43,7 @@ header {
       // display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 6;
       .hamburgerMenu {
         margin: 0;
         background-color: transparent;
@@ -74,6 +76,7 @@ header {
         background-color: $secondaryColor;
         border-radius: 0.5rem;
         padding: 0.5rem 1rem;
+        box-shadow: $shadowLevel3;
 
         position: absolute;
         display: flex;
@@ -90,25 +93,24 @@ header {
     }
 
     //
-    .overlay {
-      position: absolute;
-      top: 0px;
-      bottom: 0px;
-      right: 0px;
-      left: 0px;
-      background-image: linear-gradient(
-        map-get($primary-palette, "b5"),
-        transparent
-      );
-      z-index: 8;
-      // &.fade-in {
-      //   display: block;
-      // }
-      // &.fade-out {
-      //   display: none;
-      // }
-    }
   }
+  // .overlay {
+  //   position: absolute;
+
+  //   top: 0px;
+  //   bottom: 0px;
+  //   right: 0px;
+  //   left: 0px;
+  //   background-image: linear-gradient($primaryColor, transparent);
+  //   z-index: 5;
+
+  //   // &.fade-in {
+  //   //   display: block;
+  //   // }
+  //   // &.fade-out {
+  //   //   display: none;
+  //   // }
+  // }
 }
 
 @media only screen and (max-width: 500px) {

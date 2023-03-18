@@ -1,3 +1,11 @@
+.leftSideContainer {
+  position: absolute;
+  left: -18rem;
+  top: 1.3rem;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
 .listOfButtons {
   margin: 1.5rem 1rem;
   .buttonItem {
@@ -42,8 +50,10 @@ a {
 }
 
 @media only screen and (max-width: 950px) {
+  .leftSideContainer {
+    left: -6rem;
+  }
   .listOfButtons {
-    margin: 0.5rem 0;
     .buttonItem {
       button {
         padding: 0.3rem;
@@ -64,5 +74,12 @@ a {
     width: min-content;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+// de modificat
+@media only screen and (max-width: 800px) {
+  .leftSideContainer {
+    top: 1rem;
   }
 }

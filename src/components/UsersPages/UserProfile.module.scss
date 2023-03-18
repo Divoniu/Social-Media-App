@@ -77,3 +77,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .userContainer {
+    .userData {
+      min-width: 10rem;
+    }
+  }
+
+  .profileImage {
+    width: 50px;
+  }
+}
