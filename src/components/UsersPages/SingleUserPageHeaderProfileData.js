@@ -8,7 +8,7 @@ export function SingleUserPageHeaderProfileData({ currentUserProfile }) {
   const sendMessageToUser = useRef();
   const { userId } = useParams();
   const openUserChat = () => {
-    const user = users[userId];
+    const user = users[userId - 1];
     const userChatData = {
       name: getUserName(user),
       picture: user.picture.thumbnail,

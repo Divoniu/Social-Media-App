@@ -3,12 +3,16 @@
   border: 1px solid black;
   // min-width: fit-content; imi produce dereglaje pe mobile
   min-width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   //do the responsive
 
   .mainInfos {
     display: grid;
     grid-template: 0.3fr 0.5fr 0.8fr / 1fr 2fr;
-
+    max-width: min-content;
+    column-gap: 2rem;
     .userPosts {
       grid-row: span 3;
 

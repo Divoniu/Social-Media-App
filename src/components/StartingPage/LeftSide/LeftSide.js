@@ -12,7 +12,7 @@ export function LeftSide() {
       <ul className={styles.listOfButtons}>
         <li className={styles.buttonItem}>
           <button>
-            <Link to="/">
+            <Link to="/home">
               <HomeIcon className={styles.icon} />
               <span className={styles.leftSideItemName}>Home</span>
             </Link>
@@ -20,7 +20,7 @@ export function LeftSide() {
         </li>
         <li className={styles.buttonItem}>
           <button>
-            <Link to="/me" className={styles.profileContainerLeftSide}>
+            <Link to="/me/0" className={styles.profileContainerLeftSide}>
               <img
                 src={require("../NewsFeed/assets/profile.jpeg")}
                 alt="profilePicture"

@@ -1,6 +1,7 @@
 .userProfileContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   margin: 5vh 15vw;
   border: 1px solid black;
@@ -9,6 +10,8 @@
   .mainInfos {
     display: grid;
     grid-template: auto auto / 1fr 2fr;
+    max-width: min-content;
+    column-gap: 2rem;
   }
 }
 
