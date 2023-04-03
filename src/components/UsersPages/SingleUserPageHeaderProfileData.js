@@ -30,12 +30,12 @@ export function SingleUserPageHeaderProfileData({ currentUserProfile }) {
       }
     });
   };
-
+  const coverImageSrc = `https://picsum.photos/id/${userId}/1000/300`;
   return (
     <>
       <div className={styles.userProfileCoverImage}>
         {/* coperta */}
-        <img src="https://picsum.photos/1000/300" alt="cover" />
+        <img src={coverImageSrc} alt="cover" />
       </div>
       <section className={styles.userProfile}>
         <div className={styles.userImageAndName}>

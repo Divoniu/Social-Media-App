@@ -6,12 +6,13 @@ import InfoTwoToneIcon from "@mui/icons-material/Info";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ReplyIcon from "@mui/icons-material/Reply";
 import CommentIcon from "@mui/icons-material/Comment";
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import CommentSection from "./Comments/CommentSection";
 
 import { useContext } from "react";
 import DataContext from "../../../context/DataContext";
 export function NewsFeed(props) {
+  const { users, getUserName } = useContext(DataContext);
   const [isLiked, setIsLiked] = useState(false);
   const [like, setLikes] = useState(Math.floor(Math.random() * 100));
   const [shares, setShares] = useState(Math.floor(Math.random() * 100));
@@ -20,8 +21,8 @@ export function NewsFeed(props) {
   const [comments, setComments] = useState();
 
   const commentDescription = useRef();
-  const { users, getUserName } = useContext(DataContext);
 
+  // const [randomUserPost, setRandomUserPost] = useState(users[Math.floor(Math.random() * users.length)]);
   const handleLike = () => {
     if (!isLiked) {
       setLikes((prevState) => prevState + 1);
@@ -45,6 +46,7 @@ export function NewsFeed(props) {
       const commentValue = commentDescription.current.value;
       // vezi daca merge cu current target in loc de useRef
       // dar mai bine folosesti useRef
+      // clar functioneaza si cu current target dar o sa am multiple rerenders
       setComments((prevState) => {
         const newComment = {
           id: prevState.length,
@@ -58,7 +60,13 @@ export function NewsFeed(props) {
       });
     }
   };
-  const randomUserPost = users[Math.floor(Math.random() * users.length)];
+
+  // const [randomUserPost, setRandomUserPost] = useState(users[Math.floor(Math.random() * users.length)]);
+  // using useMemo imi generez valoarea pe care o vreau o singura data la initializare, chestia asta o pot face si cu use State cum este mai sus
+  const randomUserPost = useMemo(() => {
+    return users[Math.floor(Math.random() * users.length)];
+  }, []);
+
   return (
     <>
       <div className={styles.mainPost}>

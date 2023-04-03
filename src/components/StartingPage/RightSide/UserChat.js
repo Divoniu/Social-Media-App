@@ -86,9 +86,8 @@ export function UserChat({ chatData, idx }) {
         <ul className={styles.chatControl}>
           <li>
             <img src={chatData.picture} alt="UserPic" />
-            {/* daca mergea duplicatefree[idx] era minunat */}
+
             <div className={styles.userChatInfo}>
-              {/* <p> {listOfChats[idx].name}</p> */}
               <p> {chatData.name}</p>
               {/* aici la nume as mai putea adauga o conditie ca daca lungimea stringului depaseste x caractere sa ii faca split si sa imi puna ... la final */}
               <p>Status</p>

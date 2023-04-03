@@ -9,7 +9,7 @@ export function MyProfileHeader({ currentUserProfile }) {
       <section className={styles.userProfileHeader}>
         <div className={styles.userProfileCoverImage}>
           {/* coperta */}
-          <img src="https://picsum.photos/1000/300" alt="cover" />
+          <img src="https://picsum.photos/id/662/1000/300" alt="cover" />
         </div>
 
         <div className={styles.userImageAndName}>
